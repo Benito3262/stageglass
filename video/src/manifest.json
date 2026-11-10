@@ -1,0 +1,197 @@
+{
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "title",
+      "lines": [
+        {
+          "file": "audio/s00.wav",
+          "frames": 43,
+          "caption": "Stageglass.",
+          "spoken": "Stage glass."
+        },
+        {
+          "file": "audio/s01.wav",
+          "frames": 83,
+          "caption": "A one-way glass for a Hermes session.",
+          "spoken": "A one way glass for a Hermes session."
+        },
+        {
+          "file": "audio/s02.wav",
+          "frames": 66,
+          "caption": "You keep the real conversation.",
+          "spoken": "You keep the real conversation."
+        },
+        {
+          "file": "audio/s03.wav",
+          "frames": 64,
+          "caption": "The audience gets a calm feed.",
+          "spoken": "The audience gets a calm feed."
+        }
+      ],
+      "frames": 256
+    },
+    {
+      "id": "flow",
+      "lines": [
+        {
+          "file": "audio/s04.wav",
+          "frames": 64,
+          "caption": "Hermes stays in charge.",
+          "spoken": "Hermes stays in charge."
+        },
+        {
+          "file": "audio/s05.wav",
+          "frames": 83,
+          "caption": "Stageglass only listens.",
+          "spoken": "Stage glass only listens."
+        },
+        {
+          "file": "audio/s06.wav",
+          "frames": 118,
+          "caption": "Hooks carry the message, the tool, and any approval.",
+          "spoken": "Hooks carry the message, the tool, and any approval."
+        },
+        {
+          "file": "audio/s07.wav",
+          "frames": 76,
+          "caption": "The feed can never approve a command.",
+          "spoken": "The feed can never approve a command."
+        }
+      ],
+      "frames": 341
+    },
+    {
+      "id": "gate",
+      "lines": [
+        {
+          "file": "audio/s08.wav",
+          "frames": 85,
+          "caption": "A known key turns into [REDACTED].",
+          "spoken": "A known key turns into redacted."
+        },
+        {
+          "file": "audio/s09.wav",
+          "frames": 62,
+          "caption": "Watch the letters change.",
+          "spoken": "Watch the letters change."
+        },
+        {
+          "file": "audio/s10.wav",
+          "frames": 117,
+          "caption": "If the scanner is not sure, the feed fails closed.",
+          "spoken": "If the scanner is not sure, the feed fails closed."
+        },
+        {
+          "file": "audio/s11.wav",
+          "frames": 87,
+          "caption": "The gate shuts, and the chip says HOLD.",
+          "spoken": "The gate shuts, and the chip says hold."
+        }
+      ],
+      "frames": 351
+    },
+    {
+      "id": "key",
+      "lines": [
+        {
+          "file": "audio/s12.wav",
+          "frames": 55,
+          "caption": "Here is a live session.",
+          "spoken": "Here is a live session."
+        },
+        {
+          "file": "audio/s13.wav",
+          "frames": 83,
+          "caption": "The fake key is on the operator screen.",
+          "spoken": "The fake key is on the operator screen."
+        },
+        {
+          "file": "audio/s14.wav",
+          "frames": 31,
+          "caption": "Turn the feed on.",
+          "spoken": "Turn the feed on."
+        },
+        {
+          "file": "audio/s15.wav",
+          "frames": 65,
+          "caption": "The audience copy hides it.",
+          "spoken": "The audience copy hides it."
+        }
+      ],
+      "frames": 234
+    },
+    {
+      "id": "tool",
+      "lines": [
+        {
+          "file": "audio/s16.wav",
+          "frames": 133,
+          "caption": "A real task updates the tool name as the agent works.",
+          "spoken": "A real task updates the tool name as the agent works."
+        }
+      ],
+      "frames": 133
+    },
+    {
+      "id": "hold",
+      "lines": [
+        {
+          "file": "audio/s17.wav",
+          "frames": 125,
+          "caption": "Then an approval carries a private key the scanner will not swear to.",
+          "spoken": "Then an approval carries a private key the scanner will not swear to."
+        },
+        {
+          "file": "audio/s18.wav",
+          "frames": 9,
+          "caption": "HOLD.",
+          "spoken": "Hold."
+        },
+        {
+          "file": "audio/s19.wav",
+          "frames": 81,
+          "caption": "Nothing raw is left on screen.",
+          "spoken": "Nothing raw is left on screen."
+        },
+        {
+          "file": "audio/s20.wav",
+          "frames": 79,
+          "caption": "You still see the prompt. They do not.",
+          "spoken": "You still see the prompt. They do not."
+        }
+      ],
+      "frames": 294
+    },
+    {
+      "id": "end",
+      "lines": [
+        {
+          "file": "audio/s21.wav",
+          "frames": 81,
+          "caption": "Add that page in OBS.",
+          "spoken": "Add that page in OBS."
+        },
+        {
+          "file": "audio/s22.wav",
+          "frames": 83,
+          "caption": "Loopback only, on the same machine.",
+          "spoken": "Loopback only, on the same machine."
+        },
+        {
+          "file": "audio/s23.wav",
+          "frames": 83,
+          "caption": "Install Stageglass from GitHub.",
+          "spoken": "Install Stage glass from GitHub."
+        },
+        {
+          "file": "audio/s24.wav",
+          "frames": 85,
+          "caption": "Here is the repo, and the landing page.",
+          "spoken": "Here is the repo, and the landing page."
+        }
+      ],
+      "frames": 332
+    }
+  ]
+}
