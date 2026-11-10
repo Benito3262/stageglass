@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stageglass</title>
+  <meta name="description" content="A one-way glass for a live Hermes session. The audience sees the task, never the secret.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#top">
+      <img src="logo.svg" alt="" width="36" height="36">
+      <span>Stageglass</span>
+    </a>
+    <nav>
+      <a href="#compare">Compare</a>
+      <a href="#install">Install</a>
+      <a href="#how">How it works</a>
+      <a href="#obs">OBS</a>
+      <a href="https://github.com/Benito3262/stageglass">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="mark" src="logo.svg" alt="Stageglass logo">
+      <p class="eyebrow">Hermes Agent plugin</p>
+      <h1>A one-way glass for a live Hermes session.</h1>
+      <p class="pitch">The audience sees the task, never the secret. A loopback page for screen sharing and OBS.</p>
+      <p class="actions">
+        <a class="button" href="#install">Install</a>
+        <a class="button quiet" href="https://github.com/Benito3262/stageglass">View the repo</a>
+      </p>
+    </section>
+
+    <section id="compare">
+      <h2>Raw session, clean feed</h2>
+      <p class="lead">These frames are from a live Hermes 0.23.1 session. The key on the left is fake. The page on the right never received it.</p>
+      <div class="pair">
+        <figure>
+          <img src="img/raw-on-air.png" alt="Hermes session showing a fake API key in the user message and a terminal ls command">
+          <figcaption>Operator session. The fake key is visible.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/clean-on-air.png" alt="Stageglass ON AIR page with the key replaced by redacted and the tool name terminal">
+          <figcaption>Audience page, ON AIR. The key is [REDACTED]. The tool name is live.</figcaption>
+        </figure>
+      </div>
+      <div class="pair">
+        <figure>
+          <img src="img/raw-hold.png" alt="Hermes approval prompt for a command that contains an unfinished fake private key">
+          <figcaption>An approval that contains an unfinished fake private key.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/clean-hold.png" alt="Stageglass HOLD page with no session text on screen">
+          <figcaption>The feed fails closed. HOLD, and nothing from the session is on screen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="install">
+      <h2>Install</h2>
+      <pre><code>hermes plugins install https://github.com/Benito3262/stageglass --enable</code></pre>
+      <p>In a session, <code>/onair on</code> prints the page. The default is <code>http://127.0.0.1:8765/</code>. It stays off until you opt in.</p>
+    </section>
+
+    <section id="how">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>
+          <strong>Hooks</strong>
+          <span>Stageglass watches the user message, the tool name, a short argument summary, and any pending approval. It does not approve, deny, or block the agent.</span>
+        </li>
+        <li>
+          <strong>Loopback</strong>
+          <span>A small Python server binds to 127.0.0.1 only. OBS on the same machine can use it as a Browser Source. Nothing is sent off the machine.</span>
+        </li>
+        <li>
+          <strong>Redaction</strong>
+          <span>Known keys, tokens, PEM blocks, seed phrases, emails, phone numbers, and .env-style secrets become [REDACTED] before they are stored.</span>
+        </li>
+        <li>
+          <strong>Fail-closed HOLD</strong>
+          <span>If a string looks like a secret and the scanner will not swear to the shape, the chip flips to HOLD and the page drops every field.</span>
+        </li>
+      </ol>
+    </section>
+
+    <section id="obs">
+      <h2>OBS</h2>
+      <ol class="obs">
+        <li>Run <code>/onair on</code> and copy the URL.</li>
+        <li>Add a Browser Source. Set the URL to <code>http://127.0.0.1:8765/</code>. 1280 by 720 is a good start.</li>
+        <li>Leave “Shutdown source when not visible” unchecked if the chip should keep updating on another scene.</li>
+        <li>OBS has to run on the same machine. The server does not accept another computer.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo.svg" alt="" width="28" height="28">
+    <p>Stageglass. <a href="https://github.com/Benito3262/stageglass">github.com/Benito3262/stageglass</a></p>
+  </footer>
+</body>
+</html>
