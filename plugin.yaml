@@ -1,0 +1,25 @@
+name: stageglass
+version: "1.0.0"
+description: Secret-safe ON AIR overlay of the live Hermes session for screen sharing and OBS.
+author: Umunnakwe Emmanuel
+license: MIT
+homepage: https://github.com/Benito3262/stageglass
+manifest_version: 1
+requires_hermes: ">=0.22.5"
+tags: [broadcast, obs, privacy, overlay]
+provides_tools: []
+provides_middleware: []
+provides_hooks:
+  - pre_llm_call
+  - pre_tool_call
+  - post_tool_call
+  - pre_approval_request
+  - post_approval_response
+  - on_session_start
+  - on_session_end
+config_schema:
+  port:
+    type: int
+    default: 8765
+    label: Overlay port
+    description: "Loopback-only page at http://127.0.0.1:8765/. Change the port, then start a new session. The server never leaves 127.0.0.1."
