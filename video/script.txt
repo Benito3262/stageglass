@@ -1,0 +1,32 @@
+You stream your AI agent.
+Everyone watching sees your screen.
+One tool call can flash an API key.
+A wallet key. Or an email.
+
+What if they saw a second, clean screen?
+Stageglass is a Hermes Agent plugin.
+A one-way glass between you and your viewers.
+
+It hooks into Hermes itself.
+Every message, tool call, and approval passes through.
+Keys, tokens, seed phrases, and emails are redacted before the audience.
+A known key turns into [REDACTED].
+Not sure? The feed goes to HOLD.
+
+Install Stageglass from GitHub.
+Type /onair on.
+Open http://127.0.0.1:8765.
+Or add that link as an OBS Browser Source.
+Share that window, not the terminal.
+/onair hold pauses. /onair off stops.
+
+Here is a real Hermes session.
+The fake key stays on your screen.
+The audience copy says [REDACTED].
+The tool name updates as the agent works.
+A private key sends the feed to HOLD.
+
+Stageglass.
+Go live without leaking.
+github.com/Benito3262/stageglass
+benito3262.github.io/stageglass

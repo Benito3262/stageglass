@@ -1,17 +1,15 @@
 import React from "react";
 import {Composition} from "remotion";
 import {Demo} from "./Demo";
-import manifest from "./manifest.json";
-
-const frames = manifest.scenes.reduce((sum, scene) => sum + scene.frames, 0);
+import timings from "./timings.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <Composition
       id="Demo"
       component={Demo}
-      durationInFrames={frames}
-      fps={manifest.fps}
+      durationInFrames={Math.round(timings.duration * timings.fps)}
+      fps={timings.fps}
       width={1920}
       height={1080}
     />
