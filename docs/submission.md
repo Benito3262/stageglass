@@ -5,8 +5,11 @@ Prepared only. Nothing here has been posted, opened, or submitted.
 Catalog pin, unchanged: `9d208c532e7a6262646608d73089f1b95a1700cd`
 That commit contains the full plugin. Later commits add the site and these docs.
 
-Landing page (intended): https://benito3262.github.io/stageglass/
+Landing page source: `/site` on `main`, and the `gh-pages` branch.
+Intended URL: https://benito3262.github.io/stageglass/
 Repo: https://github.com/Benito3262/stageglass
+
+GitHub Pages is not switched on. The available token cannot change Pages settings (`403 Resource not accessible by integration`). The Pages workflow's configure step failed for the same reason, and the public URL currently returns 404. To publish: Settings → Pages → Deploy from branch `gh-pages` / root, or GitHub Actions for `.github/workflows/pages.yml`. The page was checked locally at desktop and mobile widths.
 
 ## Upstream PR
 
