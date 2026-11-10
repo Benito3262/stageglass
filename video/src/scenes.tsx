@@ -131,18 +131,42 @@ export const Kinetic: React.FC = () => {
   );
 };
 
-const FOCAL: Record<string, {top: [number, number]; bottom: [number, number]; topLabel: string; bottomLabel: string}> = {
-  onair: {top: [290, 752], bottom: [1280, 248], topLabel: "Your screen", bottomLabel: "Audience"},
-  key: {top: [290, 752], bottom: [1280, 248], topLabel: "Your screen", bottomLabel: "Audience"},
-  tool: {top: [340, 730], bottom: [1280, 330], topLabel: "Your screen", bottomLabel: "Tool name"},
-  hold: {top: [340, 690], bottom: [1420, 270], topLabel: "Approval", bottomLabel: "Audience"},
+type Shot = {x: number; y: number; pin: "left"; zoom: [number, number]};
+
+// Source pixels. Audience panes are pinned to the left of the audience
+// window (x >= 988), past the Hermes sidebar that otherwise covers the header.
+const FOCAL: Record<string, {top: Shot; bottom: Shot; topLabel: string; bottomLabel: string}> = {
+  onair: {
+    top: {x: 16, y: 736, pin: "left", zoom: [2.05, 2.5]},
+    bottom: {x: 988, y: 226, pin: "left", zoom: [2.05, 2.5]},
+    topLabel: "Your screen",
+    bottomLabel: "Audience",
+  },
+  key: {
+    top: {x: 16, y: 736, pin: "left", zoom: [2.05, 2.5]},
+    bottom: {x: 988, y: 226, pin: "left", zoom: [2.05, 2.5]},
+    topLabel: "Your screen",
+    bottomLabel: "Audience",
+  },
+  tool: {
+    top: {x: 16, y: 748, pin: "left", zoom: [2.05, 2.45]},
+    bottom: {x: 988, y: 250, pin: "left", zoom: [2.05, 2.45]},
+    topLabel: "Your screen",
+    bottomLabel: "Tool name",
+  },
+  hold: {
+    top: {x: 16, y: 700, pin: "left", zoom: [1.9, 2.15]},
+    bottom: {x: 988, y: 250, pin: "left", zoom: [1.85, 2.12]},
+    topLabel: "Approval",
+    bottomLabel: "Audience",
+  },
 };
 
-const ZoomPane: React.FC<{clip: string; focus: [number, number]; label: string}> = ({clip, focus, label}) => {
+const ZoomPane: React.FC<{clip: string; shot: Shot; label: string}> = ({clip, shot, label}) => {
   const frame = useCurrentFrame();
   const local = frame / 30;
   const spec = CLIPS[clip];
-  const zoom = interpolate(local, [0, Math.max(spec.max, 0.4)], [2.05, 2.85], {
+  const zoom = interpolate(local, [0, Math.max(spec.max, 0.4)], shot.zoom, {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.inOut(Easing.cubic),
@@ -151,8 +175,8 @@ const ZoomPane: React.FC<{clip: string; focus: [number, number]; label: string}>
     position: "absolute",
     width: 1920 * zoom,
     height: 1080 * zoom,
-    left: `calc(50% - ${focus[0] * zoom}px)`,
-    top: `calc(50% - ${focus[1] * zoom}px)`,
+    left: -shot.x * zoom,
+    top: `calc(50% - ${shot.y * zoom}px)`,
   };
   return (
     <div style={{flex: 1, position: "relative", overflow: "hidden", borderRadius: 18, background: "#0d1014", border: "1px solid rgba(244,240,230,0.12)"}}>
@@ -161,7 +185,7 @@ const ZoomPane: React.FC<{clip: string; focus: [number, number]; label: string}>
       ) : (
         <Img src={staticFile(spec.still)} style={media} />
       )}
-      <div style={{position: "absolute", left: 16, top: 12, background: "rgba(10,12,16,0.88)", border: "1px solid rgba(225,93,93,0.8)", borderRadius: 999, padding: "6px 12px", color: INK, fontFamily: SANS, fontSize: 20, lineHeight: "24px"}}>
+      <div style={{position: "absolute", left: shot.x > 400 ? 16 : undefined, right: shot.x > 400 ? undefined : 16, bottom: shot.x > 400 ? 12 : undefined, top: shot.x > 400 ? undefined : 12, background: "rgba(10,12,16,0.88)", border: "1px solid rgba(225,93,93,0.8)", borderRadius: 999, padding: "6px 12px", color: INK, fontFamily: SANS, fontSize: 20, lineHeight: "24px", whiteSpace: "nowrap"}}>
         {label}
       </div>
     </div>
@@ -172,8 +196,8 @@ const ZoomStack: React.FC<{clip: string}> = ({clip}) => {
   const focal = FOCAL[clip];
   return (
     <div style={{position: "absolute", left: 36, right: 36, top: 168, bottom: 176, display: "flex", flexDirection: "column", gap: 12}}>
-      <ZoomPane clip={clip} focus={focal.top} label={focal.topLabel} />
-      <ZoomPane clip={clip} focus={focal.bottom} label={focal.bottomLabel} />
+      <ZoomPane clip={clip} shot={focal.top} label={focal.topLabel} />
+      <ZoomPane clip={clip} shot={focal.bottom} label={focal.bottomLabel} />
     </div>
   );
 };
@@ -231,44 +255,63 @@ export const IdeaScene: React.FC<SceneProps> = ({time, sceneStart}) => {
   );
 };
 
+const FLOW_NODES = [
+  ["Hermes", "Hermes"],
+  ["Message", "message"],
+  ["Tool", "tool"],
+  ["Approval", "approval"],
+  ["Redact", "redacted"],
+  ["Audience", "audience"],
+] as const;
+
+const FLOW_CHIPS = [
+  ["Keys", "Keys", 0, 118],
+  ["Tokens", "tokens", 142, 132],
+  ["Seed phrases", "seed", 298, 196],
+  ["Emails", "emails", 518, 124],
+] as const;
+
+const NODE_W = 220;
+const NODE_STEP = 292;
+
 export const HowScene: React.FC<SceneProps> = ({time, sceneStart}) => {
-  const nodes = [
-    ["Hermes", "Hermes"],
-    ["Message", "message"],
-    ["Tool", "tool"],
-    ["Approval", "approval"],
-    ["Redact", "redacted"],
-    ["Audience", "audience"],
-  ] as const;
-  const chips = [
-    ["Keys", "Keys"],
-    ["Tokens", "tokens"],
-    ["Seed phrases", "seed"],
-    ["Emails", "emails"],
-  ] as const;
   const morphStart = wordStart("how", "turns");
   const morph = interpolate(time, [morphStart, morphStart + 1.3], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic)});
   const gateAt = wordStart("how", "sure");
   const holdAt = wordStart("how", "HOLD");
-  const close = interpolate(time, [gateAt, holdAt], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic)});
-  const chip = pop(time, holdAt - 0.2);
+  const fadeEnd = gateAt + 0.45;
+  const diagram = interpolate(time, [gateAt, fadeEnd], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic)});
+  const door = interpolate(time, [fadeEnd - 0.08, holdAt], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic)});
+  const chip = pop(time, holdAt - 0.15);
+  const bobTime = Math.min(time, gateAt);
   return (
     <Backdrop time={time}>
       <Headline text="HOW IT WORKS" time={time} start={sceneStart} />
-      <div style={{position: "absolute", left: 70, right: 70, top: 230, height: 120}}>
-        {nodes.map(([label, word], index) => {
+      <div
+        style={{
+          position: "absolute",
+          left: 48,
+          top: 214,
+          width: 1824,
+          height: 420,
+          opacity: diagram,
+          transform: `scale(${0.96 + diagram * 0.04})`,
+          transformOrigin: "912px 150px",
+        }}
+      >
+        {FLOW_NODES.map(([label, word], index) => {
           const at = wordStart("how", word);
           if (time < at) return null;
           const enter = pop(time, at);
-          const idle = Math.sin(time * 2 + index) * 4;
+          const idle = Math.sin(bobTime * 2 + index) * 3;
           return (
             <div
               key={label}
               style={{
                 position: "absolute",
-                left: index * 300,
-                top: idle,
-                width: 230,
+                left: 72 + index * NODE_STEP,
+                top: 8 + idle,
+                width: NODE_W,
                 height: 78,
                 borderRadius: 18,
                 display: "flex",
@@ -281,44 +324,66 @@ export const HowScene: React.FC<SceneProps> = ({time, sceneStart}) => {
                 fontSize: 26,
                 lineHeight: "32px",
                 whiteSpace: "nowrap",
+                boxSizing: "border-box",
                 opacity: 1,
-                transform: `translateY(${(1 - enter) * 16}px) scale(${0.96 + enter * 0.04})`,
+                transform: `translateY(${(1 - enter) * 16}px)`,
               }}
             >
               {label}
             </div>
           );
         })}
-        <svg width="1800" height="120" style={{position: "absolute", inset: 0, pointerEvents: "none"}}>
-          {nodes.slice(0, -1).map((node, index) => {
+        <svg width="1824" height="100" style={{position: "absolute", left: 0, top: 0, pointerEvents: "none"}}>
+          {FLOW_NODES.slice(0, -1).map((node, index) => {
             const start = wordStart("how", node[1]);
-            const end = Math.max(wordStart("how", nodes[index + 1][1]), start + 0.05);
+            const end = Math.max(wordStart("how", FLOW_NODES[index + 1][1]), start + 0.05);
             const progress = interpolate(time, [start, end], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
-            const x1 = index * 300 + 230;
-            const x2 = x1 + 70 * progress;
-            return <line key={node[0]} x1={x1} y1={40} x2={x2} y2={40} stroke={ACCENT} strokeWidth={3} strokeDasharray="8 7" strokeDashoffset={-time * 28} />;
+            const x1 = 72 + index * NODE_STEP + NODE_W;
+            const x2 = x1 + (NODE_STEP - NODE_W) * progress;
+            return <line key={node[0]} x1={x1} y1={47} x2={x2} y2={47} stroke={ACCENT} strokeWidth={3} strokeDasharray="8 7" strokeDashoffset={-bobTime * 28} />;
           })}
         </svg>
-      </div>
-      <div style={{position: "absolute", top: 390, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 18}}>
-        {chips.map(([label, word]) => {
+        {FLOW_CHIPS.map(([label, word, left, width]) => {
           const at = wordStart("how", word);
           if (time < at) return null;
           const enter = pop(time, at);
           return (
-            <div key={label} style={{opacity: 1, transform: `translateY(${(1 - enter) * 12}px)`, border: "1px solid rgba(244,240,230,0.16)", borderRadius: 999, padding: "10px 18px", color: MUTED, fontFamily: SANS, fontSize: 24, lineHeight: "28px", whiteSpace: "nowrap", background: "#161b22"}}>
+            <div
+              key={label}
+              style={{
+                position: "absolute",
+                left: 591 + left,
+                top: 150,
+                width,
+                height: 48,
+                boxSizing: "border-box",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: 1,
+                transform: `translateY(${(1 - enter) * 12}px)`,
+                border: "1px solid rgba(244,240,230,0.16)",
+                borderRadius: 999,
+                color: MUTED,
+                fontFamily: SANS,
+                fontSize: 24,
+                lineHeight: "28px",
+                whiteSpace: "nowrap",
+                background: "#161b22",
+              }}
+            >
               {label}
             </div>
           );
         })}
+        <div style={{position: "absolute", top: 250, left: 0, width: 1824, height: 56, textAlign: "center", fontFamily: MONO, fontSize: 36, lineHeight: "56px"}}>
+          <div style={{opacity: 1 - morph, color: ACCENT, letterSpacing: morph * 4}}>sk-proj-FAKESTAGEGLASSKEY1234567890</div>
+          <div style={{position: "absolute", left: 0, width: 1824, top: 0, opacity: morph, clipPath: `inset(0 ${(1 - morph) * 100}% 0 0)`}}>[REDACTED]</div>
+        </div>
       </div>
-      <div style={{position: "absolute", top: 500, left: 0, right: 0, textAlign: "center", fontFamily: MONO, fontSize: 36, height: 56, opacity: close > 0.05 ? 0 : 1}}>
-        <div style={{opacity: 1 - morph, color: ACCENT, letterSpacing: morph * 4}}>sk-proj-FAKESTAGEGLASSKEY1234567890</div>
-        <div style={{position: "absolute", left: 0, right: 0, top: 0, opacity: morph, clipPath: `inset(0 ${(1 - morph) * 100}% 0 0)`}}>[REDACTED]</div>
-      </div>
-      <div style={{position: "absolute", left: 0, top: 210, bottom: 180, width: "50%", background: "rgba(10,12,16,0.98)", borderRight: "3px solid #e15d5d", transform: `translateX(${(1 - close) * -102}%)`}} />
-      <div style={{position: "absolute", right: 0, top: 210, bottom: 180, width: "50%", background: "rgba(10,12,16,0.98)", borderLeft: "3px solid #e15d5d", transform: `translateX(${(1 - close) * 102}%)`}} />
-      <div style={{position: "absolute", left: "50%", top: 430, transform: `translateX(-50%) scale(${0.86 + chip * 0.14})`, opacity: time + 0.2 >= wordStart("how", "HOLD") ? 1 : 0, background: "#3a1c22", color: "#ffd0d0", fontFamily: SANS, borderRadius: 999, padding: "12px 26px", letterSpacing: 3, fontSize: 28, lineHeight: "32px"}}>
+      <div style={{position: "absolute", left: 0, top: 210, bottom: 180, width: "50%", background: "#0a0c10", borderRight: "3px solid #e15d5d", transform: `translateX(${(1 - door) * -102}%)`}} />
+      <div style={{position: "absolute", right: 0, top: 210, bottom: 180, width: "50%", background: "#0a0c10", borderLeft: "3px solid #e15d5d", transform: `translateX(${(1 - door) * 102}%)`}} />
+      <div style={{position: "absolute", left: 860, top: 430, width: 200, height: 56, transform: `scale(${0.86 + chip * 0.14})`, transformOrigin: "100px 28px", opacity: time + 0.15 >= holdAt ? 1 : 0, background: "#3a1c22", color: "#ffd0d0", fontFamily: SANS, borderRadius: 999, letterSpacing: 3, fontSize: 28, lineHeight: "56px", textAlign: "center"}}>
         HOLD
       </div>
     </Backdrop>

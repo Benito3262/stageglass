@@ -27,6 +27,8 @@ BEAT = 60 / BPM
 WORDS_PER_SECOND = 2.5
 # Time the finished line stays readable after its last word appears.
 HOLD_AFTER_LAST = 1.1
+# Rest after a scene's last line, on top of that hold, before the cut.
+SCENE_TAIL = 0.55
 
 # A line is spoken text, with {one token} for a phrase that should appear together.
 SCENES = [
@@ -89,8 +91,8 @@ SCENES = [
         "lines": [
             "Stageglass.",
             "Go live without leaking.",
-            {"text": "{github.com/Benito3262/stageglass}", "min": 3.6},
-            {"text": "{benito3262.github.io/stageglass}", "min": 3.6},
+            {"text": "{github.com/Benito3262/stageglass}", "min": 2.4},
+            {"text": "{benito3262.github.io/stageglass}", "min": 2.4},
         ],
     },
 ]
@@ -109,13 +111,8 @@ def tokens(line: str) -> list[str]:
 
 def line_of(item: str | dict) -> tuple[str, str | None, float]:
     if isinstance(item, str):
-        return item, None, 2.4
-    return item["text"], item.get("clip"), float(item.get("min", 2.4))
-
-
-def snap(seconds: float, minimum: float) -> float:
-    beats = max(1, math.ceil(max(seconds, minimum) / BEAT - 1e-9))
-    return round(beats * BEAT, 3)
+        return item, None, 0.0
+    return item["text"], item.get("clip"), float(item.get("min", 0.0))
 
 
 def build_timeline() -> dict:
@@ -152,8 +149,8 @@ def build_timeline() -> dict:
                 })
             script_lines.append(readable)
             cursor += duration
-        # Scene changes land on a beat. The extra time stays on the last line.
-        cursor = snap(cursor, 0)
+        # A short rest after the last caption, not a snap to the next beat.
+        cursor = round(cursor + SCENE_TAIL, 3)
         sentences[-1]["end"] = round(cursor, 3)
         scenes.append({
             "id": scene["id"],
@@ -326,6 +323,13 @@ def main() -> None:
     for scene in timeline["scenes"]:
         print(f"{scene['id']:8} {scene['start']:6.2f} {scene['end']:6.2f}")
     print(f"hold_thud {hold:.2f}")
+    for sentence in timeline["sentences"]:
+        last = [word for word in timeline["words"] if word["scene"] == sentence["scene"] and sentence["start"] - 0.01 <= word["start"] < sentence["end"] - 0.01]
+        if not last:
+            continue
+        hold_left = sentence["end"] - last[-1]["start"]
+        flag = " SHORT" if hold_left < 1.0 else ""
+        print(f"  {sentence['start']:6.2f}-{sentence['end']:6.2f} hold {hold_left:.2f}{flag}  {sentence['text']}")
 
 
 if __name__ == "__main__":
