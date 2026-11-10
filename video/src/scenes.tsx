@@ -6,9 +6,9 @@ const INK = "#f4f0e6";
 const MUTED = "#a7b0bd";
 const ACCENT = "#e15d5d";
 const PANEL = "#161b22";
-const SANS = "DejaVu Sans, sans-serif";
-const SERIF = "DejaVu Serif, serif";
-const MONO = "DejaVu Sans Mono, monospace";
+const SANS = "StageSans, DejaVu Sans, sans-serif";
+const SERIF = "StageSerif, DejaVu Serif, serif";
+const MONO = "StageMono, DejaVu Sans Mono, monospace";
 
 const CLIPS: Record<string, {from: number; max: number; still: string}> = {
   key: {from: 5.0, max: 4.2, still: "freeze-key.png"},
@@ -80,10 +80,10 @@ export const Kinetic: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const time = frame / fps;
-  const index = Math.max(0, timings.sentences.findIndex((sentence) => time >= sentence.start && time < sentence.end + 0.09));
-  const sentence = timings.sentences[index] ?? timings.sentences[0];
-  const next = timings.sentences[index + 1]?.start ?? 999;
-  const words = timings.words.filter((word) => word.start >= sentence.start - 0.03 && word.start < next - 0.03);
+  const found = timings.sentences.findIndex((sentence) => time >= sentence.start && time < sentence.end);
+  const index = found >= 0 ? found : timings.sentences.length - 1;
+  const sentence = timings.sentences[index];
+  const words = timings.words.filter((word) => word.scene === sentence.scene && word.start >= sentence.start - 0.02 && word.start < sentence.end - 0.02);
   const caret = Math.floor(time * 3) % 2 === 0;
   return (
     <div
@@ -113,11 +113,13 @@ export const Kinetic: React.FC = () => {
             key={`${word.start}-${wordIndex}`}
             style={{
               display: "inline-block",
-              opacity: enter,
-              transform: `translateY(${(1 - enter) * 14}px)`,
+              opacity: 1,
+              transform: `translateY(${(1 - enter) * 12}px)`,
               color: word.emphasis || live ? "#ffd0d0" : INK,
-              fontFamily: word.text.startsWith("/") || word.text.includes(".") ? MONO : SANS,
+              fontFamily: word.text.startsWith("/") || word.text.includes("github") || word.text.includes("127.0.0.1") ? MONO : SANS,
               fontSize: 36,
+              lineHeight: "44px",
+              whiteSpace: "nowrap",
             }}
           >
             {word.text}
@@ -129,35 +131,49 @@ export const Kinetic: React.FC = () => {
   );
 };
 
-const Footage: React.FC<{clip: string; focus?: string}> = ({clip, focus = "center 48%"}) => {
+const FOCAL: Record<string, {top: [number, number]; bottom: [number, number]; topLabel: string; bottomLabel: string}> = {
+  onair: {top: [290, 752], bottom: [1280, 248], topLabel: "Your screen", bottomLabel: "Audience"},
+  key: {top: [290, 752], bottom: [1280, 248], topLabel: "Your screen", bottomLabel: "Audience"},
+  tool: {top: [340, 730], bottom: [1280, 330], topLabel: "Your screen", bottomLabel: "Tool name"},
+  hold: {top: [340, 690], bottom: [1420, 270], topLabel: "Approval", bottomLabel: "Audience"},
+};
+
+const ZoomPane: React.FC<{clip: string; focus: [number, number]; label: string}> = ({clip, focus, label}) => {
   const frame = useCurrentFrame();
   const local = frame / 30;
   const spec = CLIPS[clip];
-  const zoom = interpolate(local, [0, Math.max(spec.max, 0.2)], [1.045, 1.01], {
+  const zoom = interpolate(local, [0, Math.max(spec.max, 0.4)], [2.05, 2.85], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.inOut(Easing.cubic),
   });
-  const style: React.CSSProperties = {
-    width: "100%",
-    height: "118%",
-    objectFit: "cover",
-    objectPosition: focus,
-    transform: `scale(${zoom})`,
-    transformOrigin: focus,
+  const media: React.CSSProperties = {
+    position: "absolute",
+    width: 1920 * zoom,
+    height: 1080 * zoom,
+    left: `calc(50% - ${focus[0] * zoom}px)`,
+    top: `calc(50% - ${focus[1] * zoom}px)`,
   };
   return (
-    <div style={{position: "absolute", inset: 0, overflow: "hidden", background: "#0d1014"}}>
+    <div style={{flex: 1, position: "relative", overflow: "hidden", borderRadius: 18, background: "#0d1014", border: "1px solid rgba(244,240,230,0.12)"}}>
       {local < spec.max ? (
-        <OffthreadVideo
-          src={staticFile("proof.mp4")}
-          trimBefore={Math.round(spec.from * 30)}
-          trimAfter={Math.round((spec.from + spec.max) * 30)}
-          style={style}
-        />
+        <OffthreadVideo src={staticFile("proof.mp4")} trimBefore={Math.round(spec.from * 30)} trimAfter={Math.round((spec.from + spec.max) * 30)} style={media} />
       ) : (
-        <Img src={staticFile(spec.still)} style={style} />
+        <Img src={staticFile(spec.still)} style={media} />
       )}
+      <div style={{position: "absolute", left: 16, top: 12, background: "rgba(10,12,16,0.88)", border: "1px solid rgba(225,93,93,0.8)", borderRadius: 999, padding: "6px 12px", color: INK, fontFamily: SANS, fontSize: 20, lineHeight: "24px"}}>
+        {label}
+      </div>
+    </div>
+  );
+};
+
+const ZoomStack: React.FC<{clip: string}> = ({clip}) => {
+  const focal = FOCAL[clip];
+  return (
+    <div style={{position: "absolute", left: 36, right: 36, top: 168, bottom: 176, display: "flex", flexDirection: "column", gap: 12}}>
+      <ZoomPane clip={clip} focus={focal.top} label={focal.topLabel} />
+      <ZoomPane clip={clip} focus={focal.bottom} label={focal.bottomLabel} />
     </div>
   );
 };
@@ -242,6 +258,7 @@ export const HowScene: React.FC<SceneProps> = ({time, sceneStart}) => {
       <div style={{position: "absolute", left: 70, right: 70, top: 230, height: 120}}>
         {nodes.map(([label, word], index) => {
           const at = wordStart("how", word);
+          if (time < at) return null;
           const enter = pop(time, at);
           const idle = Math.sin(time * 2 + index) * 4;
           return (
@@ -258,10 +275,14 @@ export const HowScene: React.FC<SceneProps> = ({time, sceneStart}) => {
                 alignItems: "center",
                 justifyContent: "center",
                 background: label === "Redact" ? "#3a1c22" : PANEL,
-                border: `2px solid ${enter > 0.4 ? "rgba(225,93,93,0.8)" : "rgba(244,240,230,0.12)"}`,
+                border: "2px solid rgba(225,93,93,0.8)",
+                color: INK,
+                fontFamily: SANS,
                 fontSize: 26,
-                opacity: enter,
-                transform: `scale(${0.86 + enter * 0.14})`,
+                lineHeight: "32px",
+                whiteSpace: "nowrap",
+                opacity: 1,
+                transform: `translateY(${(1 - enter) * 16}px) scale(${0.96 + enter * 0.04})`,
               }}
             >
               {label}
@@ -281,9 +302,11 @@ export const HowScene: React.FC<SceneProps> = ({time, sceneStart}) => {
       </div>
       <div style={{position: "absolute", top: 390, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 18}}>
         {chips.map(([label, word]) => {
-          const enter = pop(time, wordStart("how", word));
+          const at = wordStart("how", word);
+          if (time < at) return null;
+          const enter = pop(time, at);
           return (
-            <div key={label} style={{opacity: enter, transform: `translateY(${(1 - enter) * 12}px)`, border: "1px solid rgba(244,240,230,0.16)", borderRadius: 999, padding: "10px 18px", color: MUTED, fontSize: 24}}>
+            <div key={label} style={{opacity: 1, transform: `translateY(${(1 - enter) * 12}px)`, border: "1px solid rgba(244,240,230,0.16)", borderRadius: 999, padding: "10px 18px", color: MUTED, fontFamily: SANS, fontSize: 24, lineHeight: "28px", whiteSpace: "nowrap", background: "#161b22"}}>
               {label}
             </div>
           );
@@ -295,7 +318,7 @@ export const HowScene: React.FC<SceneProps> = ({time, sceneStart}) => {
       </div>
       <div style={{position: "absolute", left: 0, top: 210, bottom: 180, width: "50%", background: "rgba(10,12,16,0.98)", borderRight: "3px solid #e15d5d", transform: `translateX(${(1 - close) * -102}%)`}} />
       <div style={{position: "absolute", right: 0, top: 210, bottom: 180, width: "50%", background: "rgba(10,12,16,0.98)", borderLeft: "3px solid #e15d5d", transform: `translateX(${(1 - close) * 102}%)`}} />
-      <div style={{position: "absolute", left: "50%", top: 430, transform: `translateX(-50%) scale(${0.8 + chip * 0.2})`, opacity: chip, background: "#3a1c22", color: "#ffd0d0", borderRadius: 999, padding: "12px 26px", letterSpacing: 3, fontSize: 28}}>
+      <div style={{position: "absolute", left: "50%", top: 430, transform: `translateX(-50%) scale(${0.86 + chip * 0.14})`, opacity: time + 0.2 >= wordStart("how", "HOLD") ? 1 : 0, background: "#3a1c22", color: "#ffd0d0", fontFamily: SANS, borderRadius: 999, padding: "12px 26px", letterSpacing: 3, fontSize: 28, lineHeight: "32px"}}>
         HOLD
       </div>
     </Backdrop>
@@ -318,12 +341,14 @@ export const UseScene: React.FC<SceneProps> = ({time, lead, sceneStart}) => {
   return (
     <Backdrop time={time}>
       <Headline text="HOW TO USE IT" time={time} start={sceneStart} />
-      <div style={{position: "absolute", left: 64, top: 210, width: 980}}>
+      {onair && time >= onair.start ? null : (
+      <div style={{position: "absolute", left: 64, top: 210, width: 1600}}>
         {steps.map(([n, title, code, word]) => {
           const at = wordStart("use", word);
+          if (time < at) return null;
           const enter = pop(time, at);
           return (
-            <div key={n} style={{display: "flex", gap: 16, marginBottom: 12, opacity: enter, transform: `translateY(${(1 - enter) * 10}px)`}}>
+            <div key={n} style={{display: "flex", gap: 16, marginBottom: 12, opacity: 1, transform: `translateY(${(1 - enter) * 10}px)`, fontFamily: SANS}}>
               <div style={{width: 36, color: ACCENT, fontSize: 24, paddingTop: 2}}>{n}</div>
               <div>
                 <div style={{fontSize: 24}}>{title}</div>
@@ -333,14 +358,10 @@ export const UseScene: React.FC<SceneProps> = ({time, lead, sceneStart}) => {
           );
         })}
       </div>
+      )}
       {onair ? (
         <Sequence from={from} durationInFrames={dur}>
-          <div style={{position: "absolute", right: 40, top: 200, width: 820, height: 560}}>
-            <div style={{color: MUTED, fontSize: 18, letterSpacing: 2, marginBottom: 8}}>REAL SESSION</div>
-            <div style={{height: 520, borderRadius: 22, overflow: "hidden", border: "1px solid rgba(244,240,230,0.14)"}}>
-              <Footage clip="onair" focus="center 64%" />
-            </div>
-          </div>
+          <ZoomStack clip="onair" />
         </Sequence>
       ) : null}
     </Backdrop>
@@ -369,9 +390,7 @@ export const ProofScene: React.FC<SceneProps> = ({time, lead, sceneStart}) => {
         const dur = Math.max(1, Math.round((group.end - group.start) * 30));
         return (
           <Sequence key={`${group.clip}-${group.start}`} from={from} durationInFrames={dur}>
-            <div style={{position: "absolute", left: 36, right: 36, top: 150, bottom: 175, borderRadius: 18, overflow: "hidden", border: "1px solid rgba(244,240,230,0.12)"}}>
-              <Footage clip={group.clip} />
-            </div>
+            <ZoomStack clip={group.clip} />
           </Sequence>
         );
       })}

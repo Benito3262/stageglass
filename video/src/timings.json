@@ -1,6 +1,6 @@
 {
   "fps": 30,
-  "duration": 79.2,
+  "duration": 89.4,
   "bpm": 100,
   "words_per_second": 2.5,
   "music": "Original synthesized bed. No third-party recording. CC0, no attribution required.",
@@ -9,226 +9,226 @@
       "id": "problem",
       "headline": "THE PROBLEM",
       "start": 0.0,
-      "end": 10.8
+      "end": 12.6
     },
     {
       "id": "idea",
       "headline": "THE IDEA",
-      "start": 10.8,
-      "end": 20.4
+      "start": 12.6,
+      "end": 24.0
     },
     {
       "id": "how",
       "headline": "HOW IT WORKS",
-      "start": 20.4,
-      "end": 36.6
+      "start": 24.0,
+      "end": 42.6
     },
     {
       "id": "use",
       "headline": "HOW TO USE IT",
-      "start": 36.6,
-      "end": 52.2
+      "start": 42.6,
+      "end": 60.0
     },
     {
       "id": "proof",
       "headline": "PROOF",
-      "start": 52.2,
-      "end": 67.2
+      "start": 60.0,
+      "end": 77.4
     },
     {
       "id": "end",
       "headline": "STAGEGLASS",
-      "start": 67.2,
-      "end": 79.2
+      "start": 77.4,
+      "end": 89.4
     }
   ],
   "sentences": [
     {
       "scene": "problem",
       "start": 0.0,
-      "end": 2.4,
+      "end": 2.7,
       "clip": null,
       "text": "You stream your AI agent."
     },
     {
       "scene": "problem",
-      "start": 2.4,
-      "end": 4.8,
+      "start": 2.7,
+      "end": 5.4,
       "clip": null,
       "text": "Everyone watching sees your screen."
     },
     {
       "scene": "problem",
-      "start": 4.8,
-      "end": 8.4,
+      "start": 5.4,
+      "end": 9.3,
       "clip": null,
       "text": "One tool call can flash an API key."
     },
     {
       "scene": "problem",
-      "start": 8.4,
-      "end": 10.8,
+      "start": 9.3,
+      "end": 12.6,
       "clip": null,
       "text": "A wallet key. Or an email."
     },
     {
       "scene": "idea",
-      "start": 10.8,
-      "end": 14.4,
+      "start": 12.6,
+      "end": 16.5,
       "clip": null,
       "text": "What if they saw a second, clean screen?"
     },
     {
       "scene": "idea",
-      "start": 14.4,
-      "end": 16.8,
+      "start": 16.5,
+      "end": 19.6,
       "clip": null,
       "text": "Stageglass is a Hermes Agent plugin."
     },
     {
       "scene": "idea",
-      "start": 16.8,
-      "end": 20.4,
+      "start": 19.6,
+      "end": 24.0,
       "clip": null,
       "text": "A one-way glass between you and your viewers."
     },
     {
       "scene": "how",
-      "start": 20.4,
-      "end": 22.8,
+      "start": 24.0,
+      "end": 26.7,
       "clip": null,
       "text": "It hooks into Hermes itself."
     },
     {
       "scene": "how",
-      "start": 22.8,
-      "end": 26.4,
+      "start": 26.7,
+      "end": 30.6,
       "clip": null,
       "text": "Every message, tool call, and approval passes through."
     },
     {
       "scene": "how",
-      "start": 26.4,
-      "end": 31.2,
+      "start": 30.6,
+      "end": 35.7,
       "clip": null,
       "text": "Keys, tokens, seed phrases, and emails are redacted before the audience."
     },
     {
       "scene": "how",
-      "start": 31.2,
-      "end": 33.6,
+      "start": 35.7,
+      "end": 38.8,
       "clip": null,
       "text": "A known key turns into [REDACTED]."
     },
     {
       "scene": "how",
-      "start": 33.6,
-      "end": 36.6,
+      "start": 38.8,
+      "end": 42.6,
       "clip": null,
       "text": "Not sure? The feed goes to HOLD."
     },
     {
       "scene": "use",
-      "start": 36.6,
-      "end": 39.0,
+      "start": 42.6,
+      "end": 45.0,
       "clip": null,
       "text": "Install Stageglass from GitHub."
     },
     {
       "scene": "use",
-      "start": 39.0,
-      "end": 41.4,
+      "start": 45.0,
+      "end": 47.4,
       "clip": "onair",
       "text": "Type /onair on."
-    },
-    {
-      "scene": "use",
-      "start": 41.4,
-      "end": 43.8,
-      "clip": null,
-      "text": "Open http://127.0.0.1:8765."
-    },
-    {
-      "scene": "use",
-      "start": 43.8,
-      "end": 47.4,
-      "clip": null,
-      "text": "Or add that link as an OBS Browser Source."
     },
     {
       "scene": "use",
       "start": 47.4,
       "end": 49.8,
       "clip": null,
-      "text": "Share that window, not the terminal."
+      "text": "Open http://127.0.0.1:8765."
     },
     {
       "scene": "use",
       "start": 49.8,
-      "end": 52.2,
+      "end": 54.1,
+      "clip": null,
+      "text": "Or add that link as an OBS Browser Source."
+    },
+    {
+      "scene": "use",
+      "start": 54.1,
+      "end": 57.2,
+      "clip": null,
+      "text": "Share that window, not the terminal."
+    },
+    {
+      "scene": "use",
+      "start": 57.2,
+      "end": 60.0,
       "clip": null,
       "text": "/onair hold pauses. /onair off stops."
     },
     {
       "scene": "proof",
-      "start": 52.2,
-      "end": 54.6,
+      "start": 60.0,
+      "end": 63.1,
       "clip": "key",
       "text": "Here is a real Hermes session."
     },
     {
       "scene": "proof",
-      "start": 54.6,
-      "end": 57.6,
+      "start": 63.1,
+      "end": 66.6,
       "clip": "key",
       "text": "The fake key stays on your screen."
     },
     {
       "scene": "proof",
-      "start": 57.6,
-      "end": 60.0,
+      "start": 66.6,
+      "end": 69.3,
       "clip": "key",
-      "text": "The audience copy says [REDACTED]."
+      "text": "The audience copy sees [REDACTED]."
     },
     {
       "scene": "proof",
-      "start": 60.0,
-      "end": 63.6,
+      "start": 69.3,
+      "end": 73.2,
       "clip": "tool",
       "text": "The tool name updates as the agent works."
     },
     {
       "scene": "proof",
-      "start": 63.6,
-      "end": 67.2,
+      "start": 73.2,
+      "end": 77.4,
       "clip": "hold",
       "text": "A private key sends the feed to HOLD."
     },
     {
       "scene": "end",
-      "start": 67.2,
-      "end": 69.6,
+      "start": 77.4,
+      "end": 79.8,
       "clip": null,
       "text": "Stageglass."
     },
     {
       "scene": "end",
-      "start": 69.6,
-      "end": 72.0,
+      "start": 79.8,
+      "end": 82.2,
       "clip": null,
       "text": "Go live without leaking."
     },
     {
       "scene": "end",
-      "start": 72.0,
-      "end": 75.6,
+      "start": 82.2,
+      "end": 85.8,
       "clip": null,
       "text": "github.com/Benito3262/stageglass"
     },
     {
       "scene": "end",
-      "start": 75.6,
-      "end": 79.2,
+      "start": 85.8,
+      "end": 89.4,
       "clip": null,
       "text": "benito3262.github.io/stageglass"
     }
@@ -271,1023 +271,1023 @@
     },
     {
       "text": "Everyone",
-      "start": 2.4,
-      "end": 2.8,
+      "start": 2.7,
+      "end": 3.1,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "watching",
-      "start": 2.8,
-      "end": 3.2,
+      "start": 3.1,
+      "end": 3.5,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "sees",
-      "start": 3.2,
-      "end": 3.6,
+      "start": 3.5,
+      "end": 3.9,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "your",
-      "start": 3.6,
-      "end": 4.0,
+      "start": 3.9,
+      "end": 4.3,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "screen.",
-      "start": 4.0,
-      "end": 4.4,
+      "start": 4.3,
+      "end": 4.7,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "One",
-      "start": 4.8,
-      "end": 5.2,
+      "start": 5.4,
+      "end": 5.8,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "tool",
-      "start": 5.2,
-      "end": 5.6,
+      "start": 5.8,
+      "end": 6.2,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "call",
-      "start": 5.6,
-      "end": 6.0,
+      "start": 6.2,
+      "end": 6.6,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "can",
-      "start": 6.0,
-      "end": 6.4,
+      "start": 6.6,
+      "end": 7.0,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "flash",
-      "start": 6.4,
-      "end": 6.8,
+      "start": 7.0,
+      "end": 7.4,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "an",
-      "start": 6.8,
-      "end": 7.2,
+      "start": 7.4,
+      "end": 7.8,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "API",
-      "start": 7.2,
-      "end": 7.6,
+      "start": 7.8,
+      "end": 8.2,
       "scene": "problem",
       "emphasis": true
     },
     {
       "text": "key.",
-      "start": 7.6,
-      "end": 8.0,
+      "start": 8.2,
+      "end": 8.6,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "A",
-      "start": 8.4,
-      "end": 8.75,
+      "start": 9.3,
+      "end": 9.7,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "wallet",
-      "start": 8.75,
-      "end": 9.1,
+      "start": 9.7,
+      "end": 10.1,
       "scene": "problem",
       "emphasis": false
     },
     {
       "text": "key.",
-      "start": 9.1,
-      "end": 9.45,
-      "scene": "problem",
-      "emphasis": false
-    },
-    {
-      "text": "Or",
-      "start": 9.45,
-      "end": 9.8,
-      "scene": "problem",
-      "emphasis": false
-    },
-    {
-      "text": "an",
-      "start": 9.8,
-      "end": 10.15,
-      "scene": "problem",
-      "emphasis": false
-    },
-    {
-      "text": "email.",
-      "start": 10.15,
+      "start": 10.1,
       "end": 10.5,
       "scene": "problem",
       "emphasis": false
     },
     {
+      "text": "Or",
+      "start": 10.5,
+      "end": 10.9,
+      "scene": "problem",
+      "emphasis": false
+    },
+    {
+      "text": "an",
+      "start": 10.9,
+      "end": 11.3,
+      "scene": "problem",
+      "emphasis": false
+    },
+    {
+      "text": "email.",
+      "start": 11.3,
+      "end": 11.7,
+      "scene": "problem",
+      "emphasis": false
+    },
+    {
       "text": "What",
-      "start": 10.8,
-      "end": 11.2,
+      "start": 12.6,
+      "end": 13.0,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "if",
-      "start": 11.2,
-      "end": 11.6,
+      "start": 13.0,
+      "end": 13.4,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "they",
-      "start": 11.6,
-      "end": 12.0,
+      "start": 13.4,
+      "end": 13.8,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "saw",
-      "start": 12.0,
-      "end": 12.4,
+      "start": 13.8,
+      "end": 14.2,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "a",
-      "start": 12.4,
-      "end": 12.8,
+      "start": 14.2,
+      "end": 14.6,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "second,",
-      "start": 12.8,
-      "end": 13.2,
+      "start": 14.6,
+      "end": 15.0,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "clean",
-      "start": 13.2,
-      "end": 13.6,
+      "start": 15.0,
+      "end": 15.4,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "screen?",
-      "start": 13.6,
-      "end": 14.0,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "Stageglass",
-      "start": 14.4,
-      "end": 14.75,
-      "scene": "idea",
-      "emphasis": true
-    },
-    {
-      "text": "is",
-      "start": 14.75,
-      "end": 15.1,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "a",
-      "start": 15.1,
-      "end": 15.45,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "Hermes",
-      "start": 15.45,
+      "start": 15.4,
       "end": 15.8,
       "scene": "idea",
       "emphasis": false
     },
     {
+      "text": "Stageglass",
+      "start": 16.5,
+      "end": 16.9,
+      "scene": "idea",
+      "emphasis": true
+    },
+    {
+      "text": "is",
+      "start": 16.9,
+      "end": 17.3,
+      "scene": "idea",
+      "emphasis": false
+    },
+    {
+      "text": "a",
+      "start": 17.3,
+      "end": 17.7,
+      "scene": "idea",
+      "emphasis": false
+    },
+    {
+      "text": "Hermes",
+      "start": 17.7,
+      "end": 18.1,
+      "scene": "idea",
+      "emphasis": false
+    },
+    {
       "text": "Agent",
-      "start": 15.8,
-      "end": 16.15,
+      "start": 18.1,
+      "end": 18.5,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "plugin.",
-      "start": 16.15,
-      "end": 16.5,
+      "start": 18.5,
+      "end": 18.9,
       "scene": "idea",
       "emphasis": false
     },
     {
       "text": "A",
-      "start": 16.8,
-      "end": 17.2,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "one-way",
-      "start": 17.2,
-      "end": 17.6,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "glass",
-      "start": 17.6,
-      "end": 18.0,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "between",
-      "start": 18.0,
-      "end": 18.4,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "you",
-      "start": 18.4,
-      "end": 18.8,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "and",
-      "start": 18.8,
-      "end": 19.2,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "your",
-      "start": 19.2,
-      "end": 19.6,
-      "scene": "idea",
-      "emphasis": false
-    },
-    {
-      "text": "viewers.",
       "start": 19.6,
       "end": 20.0,
       "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "It",
+      "text": "one-way",
+      "start": 20.0,
+      "end": 20.4,
+      "scene": "idea",
+      "emphasis": false
+    },
+    {
+      "text": "glass",
       "start": 20.4,
       "end": 20.8,
-      "scene": "how",
+      "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "hooks",
+      "text": "between",
       "start": 20.8,
       "end": 21.2,
-      "scene": "how",
+      "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "into",
+      "text": "you",
       "start": 21.2,
       "end": 21.6,
-      "scene": "how",
+      "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "Hermes",
+      "text": "and",
       "start": 21.6,
       "end": 22.0,
-      "scene": "how",
+      "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "itself.",
+      "text": "your",
       "start": 22.0,
       "end": 22.4,
-      "scene": "how",
+      "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "Every",
-      "start": 22.8,
-      "end": 23.2,
-      "scene": "how",
+      "text": "viewers.",
+      "start": 22.4,
+      "end": 22.8,
+      "scene": "idea",
       "emphasis": false
     },
     {
-      "text": "message,",
-      "start": 23.2,
-      "end": 23.6,
-      "scene": "how",
-      "emphasis": false
-    },
-    {
-      "text": "tool",
-      "start": 23.6,
-      "end": 24.0,
-      "scene": "how",
-      "emphasis": false
-    },
-    {
-      "text": "call,",
+      "text": "It",
       "start": 24.0,
       "end": 24.4,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "and",
+      "text": "hooks",
       "start": 24.4,
       "end": 24.8,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "approval",
+      "text": "into",
       "start": 24.8,
       "end": 25.2,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "passes",
+      "text": "Hermes",
       "start": 25.2,
       "end": 25.6,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "through.",
+      "text": "itself.",
       "start": 25.6,
       "end": 26.0,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "Keys,",
-      "start": 26.4,
-      "end": 26.8,
+      "text": "Every",
+      "start": 26.7,
+      "end": 27.1,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "tokens,",
-      "start": 26.8,
-      "end": 27.2,
+      "text": "message,",
+      "start": 27.1,
+      "end": 27.5,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "seed",
-      "start": 27.2,
-      "end": 27.6,
+      "text": "tool",
+      "start": 27.5,
+      "end": 27.9,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "phrases,",
-      "start": 27.6,
-      "end": 28.0,
+      "text": "call,",
+      "start": 27.9,
+      "end": 28.3,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "and",
-      "start": 28.0,
-      "end": 28.4,
+      "start": 28.3,
+      "end": 28.7,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "emails",
-      "start": 28.4,
-      "end": 28.8,
+      "text": "approval",
+      "start": 28.7,
+      "end": 29.1,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "are",
-      "start": 28.8,
-      "end": 29.2,
+      "text": "passes",
+      "start": 29.1,
+      "end": 29.5,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "redacted",
-      "start": 29.2,
-      "end": 29.6,
+      "text": "through.",
+      "start": 29.5,
+      "end": 29.9,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "before",
-      "start": 29.6,
-      "end": 30.0,
+      "text": "Keys,",
+      "start": 30.6,
+      "end": 31.0,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "the",
-      "start": 30.0,
-      "end": 30.4,
+      "text": "tokens,",
+      "start": 31.0,
+      "end": 31.4,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "audience.",
-      "start": 30.4,
-      "end": 30.8,
+      "text": "seed",
+      "start": 31.4,
+      "end": 31.8,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "A",
-      "start": 31.2,
-      "end": 31.55,
+      "text": "phrases,",
+      "start": 31.8,
+      "end": 32.2,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "known",
-      "start": 31.55,
-      "end": 31.9,
-      "scene": "how",
-      "emphasis": false
-    },
-    {
-      "text": "key",
-      "start": 31.9,
-      "end": 32.25,
-      "scene": "how",
-      "emphasis": false
-    },
-    {
-      "text": "turns",
-      "start": 32.25,
+      "text": "and",
+      "start": 32.2,
       "end": 32.6,
       "scene": "how",
       "emphasis": false
     },
     {
-      "text": "into",
+      "text": "emails",
       "start": 32.6,
-      "end": 32.95,
+      "end": 33.0,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "are",
+      "start": 33.0,
+      "end": 33.4,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "redacted",
+      "start": 33.4,
+      "end": 33.8,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "before",
+      "start": 33.8,
+      "end": 34.2,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "the",
+      "start": 34.2,
+      "end": 34.6,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "audience.",
+      "start": 34.6,
+      "end": 35.0,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "A",
+      "start": 35.7,
+      "end": 36.1,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "known",
+      "start": 36.1,
+      "end": 36.5,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "key",
+      "start": 36.5,
+      "end": 36.9,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "turns",
+      "start": 36.9,
+      "end": 37.3,
+      "scene": "how",
+      "emphasis": false
+    },
+    {
+      "text": "into",
+      "start": 37.3,
+      "end": 37.7,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "[REDACTED].",
-      "start": 32.95,
-      "end": 33.3,
+      "start": 37.7,
+      "end": 38.1,
       "scene": "how",
       "emphasis": true
     },
     {
       "text": "Not",
-      "start": 33.6,
-      "end": 33.986,
+      "start": 38.8,
+      "end": 39.2,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "sure?",
-      "start": 33.986,
-      "end": 34.371,
+      "start": 39.2,
+      "end": 39.6,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "The",
-      "start": 34.371,
-      "end": 34.757,
+      "start": 39.6,
+      "end": 40.0,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "feed",
-      "start": 34.757,
-      "end": 35.143,
+      "start": 40.0,
+      "end": 40.4,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "goes",
-      "start": 35.143,
-      "end": 35.529,
+      "start": 40.4,
+      "end": 40.8,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "to",
-      "start": 35.529,
-      "end": 35.914,
+      "start": 40.8,
+      "end": 41.2,
       "scene": "how",
       "emphasis": false
     },
     {
       "text": "HOLD.",
-      "start": 35.914,
-      "end": 36.3,
+      "start": 41.2,
+      "end": 41.6,
       "scene": "how",
       "emphasis": true
     },
     {
       "text": "Install",
-      "start": 36.6,
-      "end": 37.0,
+      "start": 42.6,
+      "end": 43.0,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "Stageglass",
-      "start": 37.0,
-      "end": 37.4,
+      "start": 43.0,
+      "end": 43.4,
       "scene": "use",
       "emphasis": true
     },
     {
       "text": "from",
-      "start": 37.4,
-      "end": 37.8,
+      "start": 43.4,
+      "end": 43.8,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "GitHub.",
-      "start": 37.8,
-      "end": 38.2,
+      "start": 43.8,
+      "end": 44.2,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "Type",
-      "start": 39.0,
-      "end": 39.4,
+      "start": 45.0,
+      "end": 45.4,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "/onair on.",
-      "start": 39.4,
-      "end": 39.8,
+      "start": 45.4,
+      "end": 45.8,
       "scene": "use",
       "emphasis": true
     },
     {
       "text": "Open",
-      "start": 41.4,
-      "end": 41.8,
+      "start": 47.4,
+      "end": 47.8,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "http://127.0.0.1:8765.",
-      "start": 41.8,
-      "end": 42.2,
+      "start": 47.8,
+      "end": 48.2,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "Or",
-      "start": 43.8,
-      "end": 44.167,
+      "start": 49.8,
+      "end": 50.2,
       "scene": "use",
       "emphasis": false
     },
     {
       "text": "add",
-      "start": 44.167,
-      "end": 44.533,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "that",
-      "start": 44.533,
-      "end": 44.9,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "link",
-      "start": 44.9,
-      "end": 45.267,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "as",
-      "start": 45.267,
-      "end": 45.633,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "an",
-      "start": 45.633,
-      "end": 46.0,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "OBS",
-      "start": 46.0,
-      "end": 46.367,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "Browser",
-      "start": 46.367,
-      "end": 46.733,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "Source.",
-      "start": 46.733,
-      "end": 47.1,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "Share",
-      "start": 47.4,
-      "end": 47.75,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "that",
-      "start": 47.75,
-      "end": 48.1,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "window,",
-      "start": 48.1,
-      "end": 48.45,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "not",
-      "start": 48.45,
-      "end": 48.8,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "the",
-      "start": 48.8,
-      "end": 49.15,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "terminal.",
-      "start": 49.15,
-      "end": 49.5,
-      "scene": "use",
-      "emphasis": false
-    },
-    {
-      "text": "/onair hold",
-      "start": 49.8,
-      "end": 50.2,
-      "scene": "use",
-      "emphasis": true
-    },
-    {
-      "text": "pauses.",
       "start": 50.2,
       "end": 50.6,
       "scene": "use",
       "emphasis": false
     },
     {
-      "text": "/onair off",
+      "text": "that",
       "start": 50.6,
       "end": 51.0,
       "scene": "use",
-      "emphasis": true
+      "emphasis": false
     },
     {
-      "text": "stops.",
+      "text": "link",
       "start": 51.0,
       "end": 51.4,
       "scene": "use",
       "emphasis": false
     },
     {
-      "text": "Here",
+      "text": "as",
+      "start": 51.4,
+      "end": 51.8,
+      "scene": "use",
+      "emphasis": false
+    },
+    {
+      "text": "an",
+      "start": 51.8,
+      "end": 52.2,
+      "scene": "use",
+      "emphasis": false
+    },
+    {
+      "text": "OBS",
       "start": 52.2,
-      "end": 52.55,
-      "scene": "proof",
+      "end": 52.6,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "is",
-      "start": 52.55,
-      "end": 52.9,
-      "scene": "proof",
+      "text": "Browser",
+      "start": 52.6,
+      "end": 53.0,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "a",
-      "start": 52.9,
-      "end": 53.25,
-      "scene": "proof",
+      "text": "Source.",
+      "start": 53.0,
+      "end": 53.4,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "real",
-      "start": 53.25,
-      "end": 53.6,
-      "scene": "proof",
+      "text": "Share",
+      "start": 54.1,
+      "end": 54.5,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "Hermes",
-      "start": 53.6,
-      "end": 53.95,
-      "scene": "proof",
+      "text": "that",
+      "start": 54.5,
+      "end": 54.9,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "session.",
-      "start": 53.95,
-      "end": 54.3,
-      "scene": "proof",
+      "text": "window,",
+      "start": 54.9,
+      "end": 55.3,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "The",
-      "start": 54.6,
-      "end": 54.986,
-      "scene": "proof",
+      "text": "not",
+      "start": 55.3,
+      "end": 55.7,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "fake",
-      "start": 54.986,
-      "end": 55.371,
-      "scene": "proof",
+      "text": "the",
+      "start": 55.7,
+      "end": 56.1,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "key",
-      "start": 55.371,
-      "end": 55.757,
-      "scene": "proof",
+      "text": "terminal.",
+      "start": 56.1,
+      "end": 56.5,
+      "scene": "use",
       "emphasis": false
     },
     {
-      "text": "stays",
-      "start": 55.757,
-      "end": 56.143,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "on",
-      "start": 56.143,
-      "end": 56.529,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "your",
-      "start": 56.529,
-      "end": 56.914,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "screen.",
-      "start": 56.914,
-      "end": 57.3,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "The",
-      "start": 57.6,
-      "end": 58.0,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "audience",
-      "start": 58.0,
-      "end": 58.4,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "copy",
-      "start": 58.4,
-      "end": 58.8,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "says",
-      "start": 58.8,
-      "end": 59.2,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "[REDACTED].",
-      "start": 59.2,
-      "end": 59.6,
-      "scene": "proof",
+      "text": "/onair hold",
+      "start": 57.2,
+      "end": 57.6,
+      "scene": "use",
       "emphasis": true
     },
     {
-      "text": "The",
+      "text": "pauses.",
+      "start": 57.6,
+      "end": 58.0,
+      "scene": "use",
+      "emphasis": false
+    },
+    {
+      "text": "/onair off",
+      "start": 58.0,
+      "end": 58.4,
+      "scene": "use",
+      "emphasis": true
+    },
+    {
+      "text": "stops.",
+      "start": 58.4,
+      "end": 58.8,
+      "scene": "use",
+      "emphasis": false
+    },
+    {
+      "text": "Here",
       "start": 60.0,
       "end": 60.4,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "tool",
+      "text": "is",
       "start": 60.4,
       "end": 60.8,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "name",
+      "text": "a",
       "start": 60.8,
       "end": 61.2,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "updates",
+      "text": "real",
       "start": 61.2,
       "end": 61.6,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "as",
+      "text": "Hermes",
       "start": 61.6,
       "end": 62.0,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "the",
+      "text": "session.",
       "start": 62.0,
       "end": 62.4,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "agent",
-      "start": 62.4,
-      "end": 62.8,
+      "text": "The",
+      "start": 63.1,
+      "end": 63.5,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "works.",
-      "start": 62.8,
-      "end": 63.2,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "A",
-      "start": 63.6,
-      "end": 64.0,
-      "scene": "proof",
-      "emphasis": false
-    },
-    {
-      "text": "private",
-      "start": 64.0,
-      "end": 64.4,
+      "text": "fake",
+      "start": 63.5,
+      "end": 63.9,
       "scene": "proof",
       "emphasis": false
     },
     {
       "text": "key",
-      "start": 64.4,
-      "end": 64.8,
+      "start": 63.9,
+      "end": 64.3,
       "scene": "proof",
       "emphasis": false
     },
     {
-      "text": "sends",
-      "start": 64.8,
-      "end": 65.2,
+      "text": "stays",
+      "start": 64.3,
+      "end": 64.7,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "on",
+      "start": 64.7,
+      "end": 65.1,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "your",
+      "start": 65.1,
+      "end": 65.5,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "screen.",
+      "start": 65.5,
+      "end": 65.9,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "The",
+      "start": 66.6,
+      "end": 67.0,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "audience",
+      "start": 67.0,
+      "end": 67.4,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "copy",
+      "start": 67.4,
+      "end": 67.8,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "sees",
+      "start": 67.8,
+      "end": 68.2,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "[REDACTED].",
+      "start": 68.2,
+      "end": 68.6,
+      "scene": "proof",
+      "emphasis": true
+    },
+    {
+      "text": "The",
+      "start": 69.3,
+      "end": 69.7,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "tool",
+      "start": 69.7,
+      "end": 70.1,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "name",
+      "start": 70.1,
+      "end": 70.5,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "updates",
+      "start": 70.5,
+      "end": 70.9,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "as",
+      "start": 70.9,
+      "end": 71.3,
       "scene": "proof",
       "emphasis": false
     },
     {
       "text": "the",
-      "start": 65.2,
-      "end": 65.6,
+      "start": 71.3,
+      "end": 71.7,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "agent",
+      "start": 71.7,
+      "end": 72.1,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "works.",
+      "start": 72.1,
+      "end": 72.5,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "A",
+      "start": 73.2,
+      "end": 73.6,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "private",
+      "start": 73.6,
+      "end": 74.0,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "key",
+      "start": 74.0,
+      "end": 74.4,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "sends",
+      "start": 74.4,
+      "end": 74.8,
+      "scene": "proof",
+      "emphasis": false
+    },
+    {
+      "text": "the",
+      "start": 74.8,
+      "end": 75.2,
       "scene": "proof",
       "emphasis": false
     },
     {
       "text": "feed",
-      "start": 65.6,
-      "end": 66.0,
+      "start": 75.2,
+      "end": 75.6,
       "scene": "proof",
       "emphasis": false
     },
     {
       "text": "to",
-      "start": 66.0,
-      "end": 66.4,
+      "start": 75.6,
+      "end": 76.0,
       "scene": "proof",
       "emphasis": false
     },
     {
       "text": "HOLD.",
-      "start": 66.4,
-      "end": 66.8,
+      "start": 76.0,
+      "end": 76.4,
       "scene": "proof",
       "emphasis": true
     },
     {
       "text": "Stageglass.",
-      "start": 67.2,
-      "end": 67.6,
+      "start": 77.4,
+      "end": 77.4,
       "scene": "end",
       "emphasis": true
     },
     {
       "text": "Go",
-      "start": 69.6,
-      "end": 70.0,
+      "start": 79.8,
+      "end": 80.2,
       "scene": "end",
       "emphasis": false
     },
     {
       "text": "live",
-      "start": 70.0,
-      "end": 70.4,
+      "start": 80.2,
+      "end": 80.6,
       "scene": "end",
       "emphasis": false
     },
     {
       "text": "without",
-      "start": 70.4,
-      "end": 70.8,
+      "start": 80.6,
+      "end": 81.0,
       "scene": "end",
       "emphasis": false
     },
     {
       "text": "leaking.",
-      "start": 70.8,
-      "end": 71.2,
+      "start": 81.0,
+      "end": 81.4,
       "scene": "end",
       "emphasis": false
     },
     {
       "text": "github.com/Benito3262/stageglass",
-      "start": 72.0,
-      "end": 72.4,
+      "start": 82.2,
+      "end": 82.2,
       "scene": "end",
       "emphasis": true
     },
     {
       "text": "benito3262.github.io/stageglass",
-      "start": 75.6,
-      "end": 76.0,
+      "start": 85.8,
+      "end": 85.8,
       "scene": "end",
       "emphasis": true
     }

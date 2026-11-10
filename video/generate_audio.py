@@ -25,6 +25,8 @@ FPS = 30
 BPM = 100
 BEAT = 60 / BPM
 WORDS_PER_SECOND = 2.5
+# Time the finished line stays readable after its last word appears.
+HOLD_AFTER_LAST = 1.1
 
 # A line is spoken text, with {one token} for a phrase that should appear together.
 SCENES = [
@@ -76,7 +78,7 @@ SCENES = [
         "lines": [
             {"text": "Here is a real Hermes session.", "clip": "key"},
             {"text": "The fake key stays on your screen.", "clip": "key"},
-            {"text": "The audience copy says {[REDACTED]}.", "clip": "key"},
+            {"text": "The audience copy sees {[REDACTED]}.", "clip": "key"},
             {"text": "The tool name updates as the agent works.", "clip": "tool"},
             {"text": "A private key sends the feed to {HOLD}.", "clip": "hold"},
         ],
@@ -127,8 +129,8 @@ def build_timeline() -> dict:
         for item in scene["lines"]:
             text, clip, minimum = line_of(item)
             pieces = tokens(text)
-            reveal = len(pieces) / WORDS_PER_SECOND
-            duration = snap(reveal, minimum)
+            reveal_end = 0 if len(pieces) <= 1 else (len(pieces) - 1) / WORDS_PER_SECOND
+            duration = round(max(reveal_end + HOLD_AFTER_LAST, minimum), 3)
             readable = " ".join(pieces)
             sentences.append({
                 "scene": scene["id"],
@@ -137,7 +139,7 @@ def build_timeline() -> dict:
                 "clip": clip,
                 "text": readable,
             })
-            gap = min(reveal, duration - 0.3) / max(1, len(pieces))
+            gap = 0 if len(pieces) <= 1 else 1 / WORDS_PER_SECOND
             for index, piece in enumerate(pieces):
                 start = cursor + index * gap
                 bare = piece.rstrip(".,?!")
@@ -150,6 +152,9 @@ def build_timeline() -> dict:
                 })
             script_lines.append(readable)
             cursor += duration
+        # Scene changes land on a beat. The extra time stays on the last line.
+        cursor = snap(cursor, 0)
+        sentences[-1]["end"] = round(cursor, 3)
         scenes.append({
             "id": scene["id"],
             "headline": scene["headline"],

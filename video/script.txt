@@ -22,7 +22,7 @@ Share that window, not the terminal.
 
 Here is a real Hermes session.
 The fake key stays on your screen.
-The audience copy says [REDACTED].
+The audience copy sees [REDACTED].
 The tool name updates as the agent works.
 A private key sends the feed to HOLD.
 
